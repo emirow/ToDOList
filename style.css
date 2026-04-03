@@ -1,119 +1,119 @@
-* { box-sizing: border-box }
+    * { box-sizing: border-box }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg,#667eea,#764ba2);
-  font-family: Arial,sans-serif;
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center
-}
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg,#667eea,#764ba2);
+      font-family: Arial,sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center
+    }
 
-.container {
-  width: 90%;
-  max-width: 350px;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.2)
-}
+    .container {
+      width: 90%;
+      max-width: 350px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.2)
+    }
 
-h1 { margin-bottom: 5px; color: #333 }
-h2 { margin-top: 0; color: #888; font-size: 18px }
+    h1 { margin-bottom: 5px; color: #333 }
+    h2 { margin-top: 0; color: #888; font-size: 18px }
 
-.task-input {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px
-}
+    .task-input {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px
+    }
 
-input {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  outline: none;
-  width: 100%;
-  transition: .2s;
-  font-size: 14px
-}
+    input {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+      width: 100%;
+      transition: .2s;
+      font-size: 14px
+    }
 
-input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102,126,234,.5)
-}
+    input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 5px rgba(102,126,234,.5)
+    }
 
-button {
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: none;
-  background: #667eea;
-  color: white;
-  cursor: pointer;
-  transition: .2s;
-  font-size: 14px
-}
+    button {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      background: #667eea;
+      color: white;
+      cursor: pointer;
+      transition: .2s;
+      font-size: 14px
+    }
 
-button:hover { background: #5563d1 }
+    button:hover { background: #5563d1 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0
-}
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0
+    }
 
-.task-list li {
-  overflow-wrap: break-word;
-  word-break: break-word;
-  max-width: 200px;
-  background: #f5f7ff;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: .2s
-}
+    .task-list li {
+      overflow-wrap: break-word;
+      word-break: break-word;
+      max-width: 200px;
+      background: #f5f7ff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: .2s
+    }
 
-.task-list li:hover { transform: scale(1.02) }
+    .task-list li:hover { transform: scale(1.02) }
 
-.task-buttons {
-  transition: .2s;
-  display: flex;
-  gap: 5px;
-  min-width: 70px
-}
+    .task-buttons {
+      transition: .2s;
+      display: flex;
+      gap: 5px;
+      min-width: 70px
+    }
 
-.edit-btn { background: #f0ad4e }
-.edit-btn:hover { background: #e59a2f }
+    .edit-btn { background: #f0ad4e }
+    .edit-btn:hover { background: #e59a2f }
 
-.delete-btn { background: #e74c3c }
-.delete-btn:hover { background: #d62c1a }
+    .delete-btn { background: #e74c3c }
+    .delete-btn:hover { background: #d62c1a }
 
-#addBtn { white-space: nowrap }
+    #addBtn { white-space: nowrap }
 
-@media(max-width:500px){
+    @media(max-width:500px){
 
-  .container { padding: 20px }
+      .container { padding: 20px }
 
-  h1 { font-size: 24px }
+      h1 { font-size: 24px }
 
-  input { font-size: 16px }
+      input { font-size: 16px }
 
-  button {
-    padding: 10px;
-    font-size: 14px;
-    min-height: 40px
-  }
+      button {
+        padding: 10px;
+        font-size: 14px;
+        min-height: 40px
+      }
 
-  .task-list li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px
-  }
+      .task-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px
+      }
 
-}
+    }
