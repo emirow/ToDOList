@@ -1,74 +1,119 @@
-const input = document.querySelector("#taskInput");
-const button = document.querySelector("#addBtn");
-const list = document.querySelector(".task-list");
+const input=document.querySelector("#taskInput");
+const button=document.querySelector("#addBtn");
+const list=document.querySelector(".task-list");
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
 
-function saveTask() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+function saveTask(){
+localStorage.setItem("tasks",JSON.stringify(tasks));
 }
 
-function renderTasks() {
-  list.innerHTML = "";
+function renderTasks(){
 
-  tasks.forEach((task, index) => {
-    const li = document.createElement("li");
+list.innerHTML="";
 
-    const span = document.createElement("span");
-    span.textContent = task;
+tasks.forEach((task,index)=>{
 
-    const buttonGroup = document.createElement("div");
-    buttonGroup.classList.add("task-buttons");
+const li=document.createElement("li");
 
-    const editBtn = document.createElement("button");
-    editBtn.textContent = "Edit";
-    editBtn.classList.add("edit-btn");
+const content=document.createElement("div");
+content.classList.add("task-content");
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add("delete-btn");
+const span=document.createElement("span");
+span.textContent=task;
 
-    editBtn.onclick = () => {
-      const newTask = prompt("Edit task:", task);
+const buttonGroup=document.createElement("div");
+buttonGroup.classList.add("task-buttons");
 
-      if (newTask && newTask.trim() !== "") {
-        tasks[index] = newTask.trim();
-        saveTask();
-        renderTasks();
-      }
-    };
+const editBtn=document.createElement("button");
+editBtn.textContent="Edit";
+editBtn.classList.add("edit-btn");
 
-    deleteBtn.onclick = () => {
-      tasks.splice(index, 1);
-      saveTask();
-      renderTasks();
-    };
+const deleteBtn=document.createElement("button");
+deleteBtn.textContent="Delete";
+deleteBtn.classList.add("delete-btn");
 
-    buttonGroup.appendChild(editBtn);
-    buttonGroup.appendChild(deleteBtn);
+editBtn.onclick=()=>{
 
-    li.appendChild(span);
-    li.appendChild(buttonGroup);
+const newTask=prompt("Edit task:",task);
 
-    list.appendChild(li);
-  });
+if(newTask && newTask.trim()!==""){
+tasks[index]=newTask.trim();
+saveTask();
+renderTasks();
 }
 
-button.addEventListener("click", () => {
-  if (input.value.trim() === "") return;
+};
 
-  tasks.push(input.value.trim());
-  saveTask();
-  renderTasks();
+deleteBtn.onclick=()=>{
 
-  input.value = "";
-  input.focus();
+tasks.splice(index,1);
+saveTask();
+renderTasks();
+
+};
+
+buttonGroup.appendChild(editBtn);
+buttonGroup.appendChild(deleteBtn);
+
+content.appendChild(span);
+content.appendChild(buttonGroup);
+
+li.appendChild(content);
+list.appendChild(li);
+
+
+
+let startX=0;
+
+content.addEventListener("touchstart",(e)=>{
+startX=e.touches[0].clientX;
 });
 
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    button.click();
-  }
+content.addEventListener("touchmove",(e)=>{
+
+let moveX=e.touches[0].clientX;
+let diff=moveX-startX;
+
+if(diff>0){
+content.style.transform=`translateX(${diff}px)`;
+}
+
+});
+
+content.addEventListener("touchend",()=>{
+
+let current=parseInt(content.style.transform.replace("translateX(",""))||0;
+
+if(current>80){
+content.style.transform="translateX(80px)";
+}else{
+content.style.transform="translateX(0)";
+}
+
+});
+
+});
+
+}
+
+button.addEventListener("click",()=>{
+
+if(input.value.trim()==="") return;
+
+tasks.push(input.value.trim());
+saveTask();
+renderTasks();
+
+input.value="";
+input.focus();
+
+});
+
+input.addEventListener("keydown",(e)=>{
+if(e.key==="Enter"){
+button.click();
+}
 });
 
 renderTasks();
