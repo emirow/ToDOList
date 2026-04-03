@@ -47,7 +47,7 @@ border-radius:10px;
 border:1px solid #ddd;
 outline:none;
 width:100%;
-transition:0.2s;
+transition:.2s;
 font-size:14px;
 }
 
@@ -63,7 +63,7 @@ border:none;
 background:#667eea;
 color:white;
 cursor:pointer;
-transition:0.2s;
+transition:.2s;
 font-size:14px;
 }
 
@@ -82,18 +82,18 @@ background:#f5f7ff;
 margin:10px 0;
 padding:10px;
 border-radius:10px;
-overflow:hidden;
-}
-
-.task-content{
 display:flex;
 justify-content:space-between;
 align-items:center;
-width:100%;
-transition:transform .3s;
+transition:.2s;
+}
+
+.task-list li:hover{
+transform:scale(1.02);
 }
 
 .task-buttons{
+transition:.2s;
 display:flex;
 gap:5px;
 min-width:70px;
@@ -137,6 +137,12 @@ button{
 padding:10px;
 font-size:14px;
 min-height:40px;
+}
+
+.task-list li{
+flex-direction:column;
+align-items:flex-start;
+gap:8px;
 }
 
 }
