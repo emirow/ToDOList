@@ -1,87 +1,74 @@
-const input=document.querySelector("#taskInput");
-const button=document.querySelector("#addBtn");
-const list=document.querySelector(".task-list");
+const input = document.querySelector("#taskInput");
+const button = document.querySelector("#addBtn");
+const list = document.querySelector(".task-list");
 
-let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-function saveTask(){
-localStorage.setItem("tasks",JSON.stringify(tasks));
+function saveTask() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function renderTasks(){
+function renderTasks() {
+  list.innerHTML = "";
 
-list.innerHTML="";
+  tasks.forEach((task, index) => {
+    const li = document.createElement("li");
 
-tasks.forEach((task,index)=>{
+    const span = document.createElement("span");
+    span.textContent = task;
 
-const li=document.createElement("li");
+    const buttonGroup = document.createElement("div");
+    buttonGroup.classList.add("task-buttons");
 
-const span=document.createElement("span");
-span.textContent=task;
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.classList.add("edit-btn");
 
-const buttonGroup=document.createElement("div");
-buttonGroup.classList.add("task-buttons");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
 
-const editBtn=document.createElement("button");
-editBtn.textContent="Edit";
-editBtn.classList.add("edit-btn");
+    editBtn.onclick = () => {
+      const newTask = prompt("Edit task:", task);
 
-const deleteBtn=document.createElement("button");
-deleteBtn.textContent="Delete";
-deleteBtn.classList.add("delete-btn");
+      if (newTask && newTask.trim() !== "") {
+        tasks[index] = newTask.trim();
+        saveTask();
+        renderTasks();
+      }
+    };
 
-editBtn.onclick=()=>{
+    deleteBtn.onclick = () => {
+      tasks.splice(index, 1);
+      saveTask();
+      renderTasks();
+    };
 
-const newTask=prompt("Edit task:",task);
+    buttonGroup.appendChild(editBtn);
+    buttonGroup.appendChild(deleteBtn);
 
-if(newTask && newTask.trim()!==""){
-tasks[index]=newTask.trim();
-saveTask();
-renderTasks();
+    li.appendChild(span);
+    li.appendChild(buttonGroup);
+
+    list.appendChild(li);
+  });
 }
 
-};
+button.addEventListener("click", () => {
+  if (input.value.trim() === "") return;
 
-deleteBtn.onclick=()=>{
+  tasks.push(input.value.trim());
+  saveTask();
+  renderTasks();
 
-tasks.splice(index,1);
-saveTask();
-renderTasks();
-
-};
-
-buttonGroup.appendChild(editBtn);
-buttonGroup.appendChild(deleteBtn);
-
-li.appendChild(span);
-li.appendChild(buttonGroup);
-
-list.appendChild(li);
-
+  input.value = "";
+  input.focus();
 });
 
-}
-
-button.addEventListener("click",()=>{
-
-if(input.value.trim()==="") return;
-
-tasks.push(input.value.trim());
-
-saveTask();
-renderTasks();
-
-input.value="";
-input.focus();
-
-});
-
-input.addEventListener("keydown",(e)=>{
-
-if(e.key==="Enter"){
-button.click();
-}
-
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    button.click();
+  }
 });
 
 renderTasks();
