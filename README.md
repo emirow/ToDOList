@@ -6,7 +6,7 @@ This project allows users to add, edit, delete and save tasks directly in the br
 
 🌐 Live Demo
 
-https://emirow.github.io/ToDOList/
+https://usmrem.github.io/ToDOList/
 
 
 🚀 About The Project
@@ -46,4 +46,4 @@ The app allows users to manage their tasks and keep them saved in the browser us
 
 Emirow
 
-GitHub: https://github.com/emirow
+GitHub: https://github.com/usmrem
