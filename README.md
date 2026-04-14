@@ -44,6 +44,4 @@ The app allows users to manage their tasks and keep them saved in the browser us
 
 👨‍💻 Author
 
-Emirow
-
 GitHub: https://github.com/usmrem
